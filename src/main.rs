@@ -47,4 +47,30 @@ fn main() {
     // let x = 5;
     // let y = x;
     // println!("x = {}, y = {}", x, y);
+
+    // let s = String::from("hello");
+    // takes_ownership(s);
+    // // println!("{}", s); s 已经不再有效
+    // let x = 5;
+    // makes_copy(x);
+    // println!("{}", x)
+
+    let s1 = String::from("hello");
+
+    let (s2, len) = calculate_length(s1);
+
+    println!("The length of '{}' is {}.", s2, len);
+}
+
+fn takes_ownership(some_string: String) {
+    println!("{}", some_string)
+}
+fn makes_copy(some_interger: i32) {
+    println!("{}", some_interger)
+}
+
+fn calculate_length(s: String) -> (String, usize) {
+    let length = s.len(); // len() 返回字符串的长度
+
+    (s, length)
 }
