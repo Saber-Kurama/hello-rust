@@ -55,11 +55,24 @@ fn main() {
     // makes_copy(x);
     // println!("{}", x)
 
-    let s1 = String::from("hello");
+    // let s1 = String::from("hello");
 
-    let (s2, len) = calculate_length(s1);
+    // let len = calculate_length(&s1);
 
-    println!("The length of '{}' is {}.", s2, len);
+    // println!("The length of '{}' is {}.", s1, len);
+
+    // let mut s = String::from("hello");
+
+    // change(&mut s);
+
+    // 可变引用的限制
+    // let mut s = String::from("hello");
+    // let r1 = &mut s;
+    // let r2 = &mut s;
+    // // println!("{}, {}", r1, r2);
+    // // println!("{}", r1);
+    // // println!("{}", r2);
+
 }
 
 fn takes_ownership(some_string: String) {
@@ -69,8 +82,28 @@ fn makes_copy(some_interger: i32) {
     println!("{}", some_interger)
 }
 
-fn calculate_length(s: String) -> (String, usize) {
-    let length = s.len(); // len() 返回字符串的长度
+// fn calculate_length(s: String) -> (String, usize) {
+//     let length = s.len(); // len() 返回字符串的长度
 
-    (s, length)
+//     (s, length)
+// }
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
+// 不允许修改引用的值
+// fn change(some_string: &String) {
+//     some_string.push_str(", world");
+// }
+
+// 可变引用
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+
+// // 悬垂引用
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+
+//     &s
+// }
