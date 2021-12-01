@@ -73,7 +73,91 @@ fn main() {
     // // println!("{}", r1);
     // // println!("{}", r2);
 
+    // struct User {
+    //     username: &str,
+    //     email: &str,
+
+    // }
+
+    // let width1 = 39;
+    // let height1 = 50;
+
+    // println!("The area of the rectangle is {} square pixels.",
+    // area(width1, height1))
+    // let rect1 = (30, 50);
+
+    // println!("The area of the rectangle is {} square pixels.",
+    // area(rect1))
+
+    // let rect1 = Rectangle{ width: 30, height: 50};
+
+    // println!("The area of the rectangle is {:#?} square pixels.",
+    // rect1.area());
+    // dbg!(&rect1);
+
+    #[derive(Debug)]
+    enum IpAddr {
+        V4(u8, u8, u8, u8),
+        V6(String),
+    }
+    let home = IpAddr::V4(127, 0, 0, 1);
+    let loopback = IpAddr::V6(String::from("::1"));
+    struct IpAddrKind {
+        kind: IpAddr,
+        address: String,
+    }
+    let home1 = IpAddrKind {
+        kind: IpAddr::V6(String::from("::1")),
+        address: String::from("127.0.0.1"),
+    };
+    println!("enum的枚举值是{:?}", home);
+    // dbg!(IpAddr);
+
+    let v = vec![1, 2, 3];
+    let third: &i32 = &v[2];
+    println!("The third element is {}", third);
+
+    match v.get(2) {
+        Some(third) => println!("The third element is {}", third),
+        None => println!("There is no third element."),
+    }
+
+    let mut v = vec![1, 2, 3, 4, 5];
+
+let first = &v[0];
+
+v.push(6);
+
+println!("The first element is: {}", first);
 }
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+impl Rectangle {
+    fn width(&self) -> bool {
+        self.width > 0
+    }
+}
+
+// fn area(rectangle: &Rectangle) -> u32 {
+//     rectangle.width * rectangle.height
+// }
+
+// fn area(dimensions: (u32, u32)) -> u32 {
+//     dimensions.0 * dimensions.1
+// }
+
+// fn area(width: u32, height: u32) -> u32 {
+//     width * height
+// }
 
 fn takes_ownership(some_string: String) {
     println!("{}", some_string)
