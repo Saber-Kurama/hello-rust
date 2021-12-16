@@ -95,41 +95,70 @@ fn main() {
     // rect1.area());
     // dbg!(&rect1);
 
-    #[derive(Debug)]
-    enum IpAddr {
-        V4(u8, u8, u8, u8),
-        V6(String),
+    // 借用的示例
+    // 切片
+    // let s = String::from("hello, rust");
+    // println!("{}", &s[0..5]);
+
+    // let vec1 = vec![1, 2, 3, 4, 5];
+    // println!("{:?}", &vec1[0..2]);
+    // // 切片作为参数
+    // // 可变切片 数据源是可变的，切片是可变的
+    // let mut vec2 = vec![1,2,3,4,5];
+    // let vec_slice = &mut vec2[0..2];
+    // vec_slice[0] = 13;
+    // println!("{:?}", vec2)
+
+    // 示例2 迭代器
+    // 迭代器 IntoIter Iter IterMut
+    
+    // let vec1 = vec!["java", "rust", "javascript"];
+    // // 所有权转移
+    // // for str in vec1.into_iter() {
+    // //     match str {
+    // //         "rust" => println!("hello reust"),
+    // //         _ => println!("{}", str)
+    // //     }
+    // // }
+
+    // // 不可变借用
+    // for str in vec1.iter() {
+    //     match str {
+    //         &"rust" => println!("hello reust"),
+    //         _ => println!("{}", str)
+    //     }
+    // }
+
+    // // 可变借用
+    // let mut vec = vec!["java", "rust", "javascript"];
+    // for str in vec.iter_mut() {
+    //     match str {
+    //         &mut "rust" => {
+    //             *str = "saber";
+    //             println!("{}", str);
+    //         },
+    //         _ => println!("{}", str)
+    //     }
+    // }
+
+    // println!("{:?}", vec)
+
+    // 生命周期
+    let str1 = String::from("abcd");
+    let result;
+    {
+        // let str2 = "xyz"; // 这个是可以的
+        let str2 = String::from("abcd的");
+        result = long_str(str1.as_str(), str2.as_str());
     }
-    let home = IpAddr::V4(127, 0, 0, 1);
-    let loopback = IpAddr::V6(String::from("::1"));
-    struct IpAddrKind {
-        kind: IpAddr,
-        address: String,
-    }
-    let home1 = IpAddrKind {
-        kind: IpAddr::V6(String::from("::1")),
-        address: String::from("127.0.0.1"),
-    };
-    println!("enum的枚举值是{:?}", home);
-    // dbg!(IpAddr);
+    println!("long {}", result)
 
-    let v = vec![1, 2, 3];
-    let third: &i32 = &v[2];
-    println!("The third element is {}", third);
-
-    match v.get(2) {
-        Some(third) => println!("The third element is {}", third),
-        None => println!("There is no third element."),
-    }
-
-    let mut v = vec![1, 2, 3, 4, 5];
-
-let first = &v[0];
-
-v.push(6);
-
-println!("The first element is: {}", first);
 }
+
+fn long_str(x: &str, y: &str) -> bool {
+    true
+}
+
 #[derive(Debug)]
 struct Rectangle {
     width: u32,

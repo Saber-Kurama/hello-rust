@@ -14,3 +14,7 @@ rust 的文档
 https://kerkour.com/rust-static-site-generator/
 https://www.getzola.org/themes/
 https://www.cnblogs.com/ExMan/p/14826045.html
+
+
+### 一些教程
+[ultimate_rust_crash_course](https://github.com/cleancut/ultimate_rust_crash_course)
